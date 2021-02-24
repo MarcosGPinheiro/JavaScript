@@ -1,0 +1,12 @@
+// calculo de fatorial
+// 5! = 5*4*3*2*1
+
+function fatorial (n) {
+    let res = n
+    for (let crt=n-1;crt>0;crt-1) {
+        res = res * crt
+    }
+    return res
+}
+
+console.log(fatorial(3))
