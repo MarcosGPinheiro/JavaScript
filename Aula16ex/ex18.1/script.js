@@ -23,14 +23,16 @@ function adicionarnun() {
         if (isNumeroValido(txtnum.value) && !isInLista(txtnum.value,vetornum)) {
             let numero = Number(txtnum.value)
             let item = document.createElement('option')
+            res.innerHTML = ''
             item.text = `Valor ${numero} adicionado`
             item.value = `lst${vetornum.length}`
             lstnum.appendChild(item)
             vetornum.push(numero)
         } else {
-            alert(`Valor ${numero} invalido ou já encontrado na lista`)
+            alert(`Valor invalido ou já encontrado na lista`)
         }
         txtnum.value = ''
+        txtnum.focus()
 }
 
 function finalizar() {
@@ -39,9 +41,10 @@ function finalizar() {
     } else {
         let maiorvalor = vetornum[0]
         let menorvalor = vetornum[0]
+        let sizevetor = vetornum.length
         let soma = 0
         let media = 0
-        for (let cont = 0; cont<vetor.length; cont++) {
+        for (let cont in vetornum) {
             soma += vetornum[cont]
             if (vetornum[cont] < menorvalor) {
                 menorvalor = vetornum[cont]
@@ -50,9 +53,9 @@ function finalizar() {
                 maiorvalor = vetornum[cont]
             }
         }
-        media = soma / pos
-        let texto = `Ao todo, temos ${vetor.length} números cadastrados. <br><br>`
-        texto += `O maior valor informado foi ${maiorvalor}.<br><br>`
+        media = soma / sizevetor
+        let texto = `<p>Ao todo, temos ${sizevetor} números cadastrados. </p>`
+        texto += `<p>O maior valor informado foi ${maiorvalor}.</p>`
         texto += `O menor valor informado foi ${menorvalor}.<br><br>`
         texto += `Somando todos os valores temos ${soma}.<br><br>`
         texto += `A média dos valores digitados é ${media}.<br>`
